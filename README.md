@@ -1,4 +1,4 @@
-# 10.5cardgame
+# 10.5 Card Game
 
 10.5 is a poker card game in which each player picks a maximum of 5 cards, and tries to hit as close to 10.5 as possible without exceeding 10.5. Each player starts the game with an initial amount of tokens to bet, and the game will only end when one of them finishes their tokens. 
 
