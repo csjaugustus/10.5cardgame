@@ -13,9 +13,7 @@ class Player():
         self.ready = False
     
     def count_points(self):
-        cards_without_suits = []
-        for card in self.cards:
-            cards_without_suits.append(card.split()[-1])
+        cards_without_suits = [card.split()[-1] for card in self.cards]
         points = []
         for card in cards_without_suits:
             if card.isdigit():
@@ -42,9 +40,7 @@ while True:
     else:
         player_names.append(player.title())
 
-players = []
-for player_name in player_names:
-    players.append.(Player(player))
+players = [Player(player_name) for player_name in player_names]
 
 for player in players:
     bet = input(f'{player.name}, how much to bet?')
