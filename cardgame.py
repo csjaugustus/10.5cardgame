@@ -10,7 +10,6 @@ class Player():
         self.cards = []
         self.points = 0
         self.token = 100
-        self.bet = 0 
         self.ready = False
     
     def count_points(self):
@@ -43,49 +42,49 @@ while True:
     else:
         player_names.append(player.title())
 
-players = {}
-for player in player_names:
-    players[player] = Player(player)
+players = []
+for player_name in player_names:
+    players.append.(Player(player))
 
 for player in players:
-    bet = input(f'{player}, how much to bet?')
-    players[player].bet = int(bet)
+    bet = input(f'{player.name}, how much to bet?')
+    player.bet = int(bet)
 
 for player in players:
-    players[player].cards.append(pick_card())
-    players[player].count_points()
-    print(f"{player}'s cards: {players[player].cards}. Points: {players[player].points}.")
+    player.cards.append(pick_card())
+    player.count_points()
+    print(f"{player.name}'s cards: {player.cards}. Points: {player.points}.")
 
 
 while True:
-    if all(players[player].ready for player in players):
+    if all(player.ready for player in players):
         break
     
     for player in players:
-        if not players[player].ready:
-            if players[player].points < 10.5:
-                response = input(f'{player}, pick 1 more card?')
+        if not player.ready:
+            if player.points < 10.5:
+                response = input(f'{player.name}, pick 1 more card?')
                 if response.lower() == 'y':
-                    players[player].cards.append(pick_card())
+                    player.cards.append(pick_card())
                 elif response.lower() == 'n':
-                    players[player].ready = True
-                players[player].count_points()
-                if players[player].points >= 10.5:
-                    players[player].ready = True
-                    print(f'{player} lost. Points: {players[player].points}')
+                    player.ready = True
+                player.count_points()
+                if player.points >= 10.5:
+                    player.ready = True
+                    print(f'{player.name} lost. Points: {player.points}')
 
     for player in players:
-        print(f"{player}'s cards: {players[player].cards}. Points: {players[player].points}.")
+        print(f"{player.name}'s cards: {player.cards}. Points: {player.points}.")
 
-not_loser = [players[player] for player in players if players[player].points <= 10.5]
+not_loser = [player for player in players if player.points <= 10.5]
 winner = sorted(not_loser, key=lambda i:i.points)[-1]
 
 for player in players:
-    if player != winner.name:
-        players[player].token -= players[player].bet
-        players[winner.name].token += players[player].bet
+    if player != winner:
+        player.token -= player.bet
+        winner.token += player.bet
 
 print(f'{winner.name} won.')
 print('Tokens:')
 for player in players:
-    print(f"{player}: {players[player].token}")
+    print(f"{player.name}: {player.token}")
